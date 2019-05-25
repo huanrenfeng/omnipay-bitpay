@@ -29,20 +29,19 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function sendData($data)
     {
-        $httpRequest = $this->httpClient->createRequest(
+        $response = $this->httpClient->request(
             $this->getHttpMethod(),
             $this->getEndpoint(),
             array('Authorization' => 'Basic '.base64_encode($this->getApiKey().':')),
             $data
         );
 
-        $httpResponse = $httpRequest->send();
 
-        return $this->response = $this->createResponse($httpResponse->json(), $httpResponse->getStatusCode());
+        return $this->response = $this->createResponse($response, json_decode($response->getBody()->getContents(), true));
     }
 
-    protected function createResponse($data, $statusCode)
+    protected function createResponse($response, $data)
     {
-        return $this->response = new PurchaseResponse($this, $data, $statusCode);
+        return $this->response = new PurchaseResponse($response, $data);
     }
 }

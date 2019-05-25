@@ -22,8 +22,8 @@ class PurchaseStatusRequest extends PurchaseRequest
         return 'GET';
     }
 
-    protected function createResponse($data, $statusCode)
+    protected function createResponse($response, $data)
     {
-        return $this->response = new PurchaseStatusResponse($this, $data, $statusCode);
+        return $this->response = new PurchaseStatusResponse($response, $data);
     }
 }
