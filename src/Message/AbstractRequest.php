@@ -33,11 +33,10 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
             $this->getHttpMethod(),
             $this->getEndpoint(),
             array('Authorization' => 'Basic '.base64_encode($this->getApiKey().':')),
-            $data
+            json_encode($data)
         );
 
-
-        return $this->response = $this->createResponse($response, json_decode($response->getBody()->getContents(), true));
+        return $this->response = $this->createResponse($this, json_decode($response->getBody()->getContents(), true));
     }
 
     protected function createResponse($response, $data)
