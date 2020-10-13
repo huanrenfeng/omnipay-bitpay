@@ -17,7 +17,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "omnipay/bitpay": "dev-master"
+        "unisender/omnipay-bitpay": "dev-master"
     }
 }
 ```
