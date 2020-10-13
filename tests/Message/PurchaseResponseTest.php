@@ -9,7 +9,8 @@ class PurchaseResponseTest extends TestCase
     public function testPurchaseSuccess()
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseSuccess.txt');
-        $response = new PurchaseResponse($this->getMockRequest(), $httpResponse->json());
+        $body = json_decode($httpResponse->getBody()->getContents(), true);
+        $response = new PurchaseResponse($this->getMockRequest(), $body);
 
         $this->assertFalse($response->isSuccessful());
         $this->assertTrue($response->isRedirect());
@@ -23,7 +24,8 @@ class PurchaseResponseTest extends TestCase
     public function testPurchaseFailure()
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseFailure.txt');
-        $response = new PurchaseResponse($this->getMockRequest(), $httpResponse->json());
+        $body = json_decode($httpResponse->getBody()->getContents(), true);
+        $response = new PurchaseResponse($this->getMockRequest(), $body);
 
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
