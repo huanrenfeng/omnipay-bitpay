@@ -23,21 +23,24 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
     public function getMessage()
     {
         if (isset($this->data['error'])) {
-            return $this->data['error']['type'] . ': ' . $this->data['error']['message'];
+            //return $this->data['error']['type'] . ': ' . $this->data['error']['message'];
+            return $this->data['error'];
         }
     }
 
     public function getTransactionReference()
     {
         if (isset($this->data['id'])) {
-            return $this->data['id'];
+            //return $this->data['id'];
+            return $this->data['data']['id'];
         }
     }
 
     public function getRedirectUrl()
     {
-        if (isset($this->data['url'])) {
-            return $this->data['url'];
+        if (isset($this->data['data'])) {
+            //return $this->data['url'];
+            return $this->data['data']['url'];
         }
     }
 

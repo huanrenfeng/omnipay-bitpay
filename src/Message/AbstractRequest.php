@@ -24,15 +24,21 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function getEndpoint()
     {
-        return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
+        //return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
+        return $this->getTestMode() ? 'https://test.bitpay.com'  : 'https://bitpay.com';
     }
 
     public function sendData($data)
     {
         $headers = [
             'Content-Type' => 'application/json',
-            'Authorization' => 'Basic ' . base64_encode($this->getApiKey() . ':'),
+            'X-Accept-Version' => '2.0.0',
+            //'Authorization' => 'Basic ' . base64_encode($this->getApiKey() . ':'),
         ];
+
+        if( !is_null($data) ){
+            $data['token'] = $this->getApiKey();
+        }
 
         $body = $data ? json_encode($data) : null;
 

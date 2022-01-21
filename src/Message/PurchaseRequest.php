@@ -15,6 +15,7 @@ class PurchaseRequest extends AbstractRequest
         $data['price'] = $this->getAmount();
         $data['currency'] = $this->getCurrency();
         $data['posData'] = $this->getTransactionId();
+        $data['orderId'] = $this->getTransactionId();
         $data['itemDesc'] = $this->getDescription();
         $data['notificationURL'] = $this->getNotifyUrl();
         $data['redirectURL'] = $this->getReturnUrl();
@@ -24,6 +25,7 @@ class PurchaseRequest extends AbstractRequest
 
     public function getEndpoint()
     {
-        return parent::getEndpoint() . '/invoice';
+        return parent::getEndpoint() . '/invoices';
+        //return parent::getEndpoint() . '/invoice';
     }
 }
