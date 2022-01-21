@@ -30,7 +30,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
 
     public function getTransactionReference()
     {
-        if (isset($this->data['id'])) {
+        if (isset($this->data['data'])) {
             //return $this->data['id'];
             return $this->data['data']['id'];
         }
