@@ -1,5 +1,5 @@
 {
-    "name": "unisender/omnipay-bitpay",
+    "name": "huanrenfeng/omnipay-bitpay",
     "type": "library",
     "description": "BitPay driver for the Omnipay payment processing library",
     "keywords": [
@@ -11,12 +11,16 @@
         "pay",
         "payment"
     ],
-    "homepage": "https://github.com/thephpleague/omnipay-bitpay",
+    "homepage": "https://github.com/huanrenfeng/omnipay-bitpay",
     "license": "MIT",
     "authors": [
         {
             "name": "Adrian Macneil",
             "email": "adrian@adrianmacneil.com"
+        },
+        {
+            "name": "huanrenfeng",
+            "email": "nobody@nobody.nobody"
         },
         {
             "name": "Omnipay Contributors",
